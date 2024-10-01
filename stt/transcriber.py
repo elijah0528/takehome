@@ -1,4 +1,5 @@
 from openai import OpenAI
+from typing import Optional
 from pydantic import BaseModel
 from dotenv import load_dotenv
 import os
@@ -13,7 +14,7 @@ OAI_API_KEY= os.getenv("OPENAI_API_KEY")
 class Transcript(BaseModel):
     id: str
     text: str
-    confidence: float
+    confidence: Optional[float]
 
 
 class Listener:
