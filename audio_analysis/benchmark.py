@@ -1,20 +1,19 @@
 from pathlib import Path
 from openai import OpenAI
 from typing import Optional
-from pydantic import BaseModel
 from dotenv import load_dotenv
 import numpy as np
+import difflib
 import os
-
 
 load_dotenv()
 
 OAI_API_KEY= os.getenv("OPENAI_API_KEY")
 
-
 # This is an interesting experiment that noises text by converting it to speech and then back to text repeatedly to test how the model changes the text.
-input = ["ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T."]
-
+input = ["ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T.",
+         "Seven seashells are silly shells to see."
+         ]
 class Benchmark:
     def __init__ (self, input_arr):
         client = OpenAI(api_key=OAI_API_KEY)
@@ -22,18 +21,22 @@ class Benchmark:
         self.input_arr = input_arr
         self.speech_file_path = Path(__file__).parent / "audio_files"
         self.speech_file_path.mkdir(parents=True, exist_ok=True)
+        self.proper_nouns = []
 
-    def transcribe_audio(self, speech_file_path):
+    def transcribe_audio(self, speech_file_path, input, changed_words=None):
         audio_file=open(speech_file_path, "rb")
         transcription = self.client.audio.transcriptions.create(
             model="whisper-1", 
             file=audio_file,
             # Prompt is limited to 240 tokens
-            prompt=input
+            # prompt=input,
+            response_format="verbose_json",
+            timestamp_granularities=["word"]
         )
+        print(f"{transcription}\n\n")
         temp_input = transcription.text
 
-        system_prompt = "You are a helpful assistant for the company ZyntriQix. Your task is to correct any spelling discrepancies in the transcribed text. Make sure that the names of the following products are spelled correctly: ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T. Only add necessary punctuation such as periods, commas, and capitalization, and use only the context provided."
+        system_prompt = "You are a helpful assistant for the company ZyntriQix. Your task is to correct any spelling discrepancies in the transcribed text. Make sure that the names of the following products are spelled correctly: ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T. Only add necessary punctuation such as periods, commas, and capitalization, and use only the context provided. Always return the corrected text and nothing else"
 
         def generate_corrected_transcript(temperature, system_prompt):
             response = self.client.chat.completions.create(
@@ -51,8 +54,22 @@ class Benchmark:
                 ]
             )
             return response.choices[0].message.content
+    
+        
 
         result = generate_corrected_transcript(0, system_prompt)
+
+        original_words = temp_input.split()
+        corrected_words = result.split()
+        print(f"Original: {original_words}")
+        print(f"Corrected: {corrected_words}")
+        diff = difflib.ndiff(original_words, corrected_words)
+        for word in diff:
+            if word.startswith('- '):
+                changed_words.append(word[2:])
+        print(f"Changed words: {changed_words}\n")
+        
+
         return result
         
     def test (self, function, iterations=5, prompt=None):
@@ -70,8 +87,8 @@ class Benchmark:
 
                 speech_file_loc = self.speech_file_path / f"speech_{i}.mp3"
                 response.stream_to_file(speech_file_loc)
-
-                result = function(speech_file_loc)
+                changed_words = []
+                result = function(speech_file_loc, input, changed_words)
 
                 temp_input = result
                 transcriptions.append(temp_input)
