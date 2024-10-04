@@ -11,7 +11,7 @@ load_dotenv()
 OAI_API_KEY= os.getenv("OPENAI_API_KEY")
 
 # This is an interesting experiment that noises text by converting it to speech and then back to text repeatedly to test how the model changes the text.
-input = ["ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T.",
+input = ["ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EXAQUAIZIA, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T.",
          "Seven seashells are silly shells to see."
          ]
 class Benchmark:
@@ -59,22 +59,40 @@ class Benchmark:
 
         result = generate_corrected_transcript(0, system_prompt)
 
-        original_words = temp_input.split()
+        original_words = input.split()
         corrected_words = result.split()
         print(f"Original: {original_words}")
         print(f"Corrected: {corrected_words}")
+        
         diff = difflib.ndiff(original_words, corrected_words)
         for word in diff:
             if word.startswith('- '):
                 changed_words.append(word[2:])
         print(f"Changed words: {changed_words}\n")
+        for index, word in enumerate(diff):
+            if word.startswith('- '):
+                removed_word = word[2:]
+                original_index = original_words.index(removed_word)
+
+                # Get the words before and after the removed word
+                before_word = original_words[original_index - 1] if original_index > 0 else None
+                after_word = original_words[original_index + 1] if original_index < len(original_words) - 1 else None
+
+                # Find timestamps for the removed word and its neighbors
+                timestamps = []
+                for transcription_word in transcription.words:
+                    if transcription_word.word in [removed_word, before_word, after_word]:
+                        timestamps.append((transcription_word.word, transcription_word.start, transcription_word.end))
+
+                changed_words.append((removed_word, before_word, after_word, timestamps))  # Store the words and their timestamps
+        print(f"Changed words with context and timestamps: {changed_words}\n")
         
 
         return result
         
     def test (self, function, iterations=5, prompt=None):
         results = []
-        for input in self.input_arr:
+        for index, input in enumerate(self.input_arr):
             transcriptions = []
             temp_input = input
             for i in range(iterations):
@@ -85,7 +103,7 @@ class Benchmark:
                     input=temp_input
                 )
 
-                speech_file_loc = self.speech_file_path / f"speech_{i}.mp3"
+                speech_file_loc = self.speech_file_path / f"speech_{index}_{i}.mp3"
                 response.stream_to_file(speech_file_loc)
                 changed_words = []
                 result = function(speech_file_loc, input, changed_words)

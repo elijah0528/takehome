@@ -1,0 +1,24 @@
+[
+    {
+        "word": "ZyntriQix, DigiQue",
+        "attempted_word": "Zintrikix, Digique",
+        "before_word": "",
+        "after_word": "Plus,",
+        "timestamps": [
+            0.9800000190734863,
+            1.2200000286102295
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_013711_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "DigiFractal",
+        "attempted_word": "Digifractal",
+        "before_word": "7,",
+        "after_word": "Matrix,",
+        "timestamps": [
+            6.420000076293945,
+            6.900000095367432
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_013711_ZyntriQix,DigiquePlus,.mp3"
+    }
+]
