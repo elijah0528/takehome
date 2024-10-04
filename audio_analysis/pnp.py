@@ -8,24 +8,24 @@ import difflib
 import os
 import datetime
 import json
+import time
+import keyboard as kbd
+import re
 
 load_dotenv()
 
 OAI_API_KEY= os.getenv("OPENAI_API_KEY")
 
 # This is an interesting experiment that noises text by converting it to speech and then back to text repeatedly to test how the model changes the text.
-input = ["ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EXAQUAIZIA, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T.",
+input_text = ["ZyntriQix, Digique Plus, CynapseFive, VortiQore V8, EXAQUAIZIA, EchoNix Array, OrbitalLink Seven, DigiFractal Matrix, PULSE, RAPT, B.R.I.C.K., Q.U.A.R.T.Z., F.L.I.N.T.",
          "Seven seashells are silly shells to see.",
+         "Seven seashells are silly shells to see.",
+
          "Artificial intelligence is transforming the world.",
          "Natural language processing enables machines to understand human language.",
          "Deep learning models require large datasets for training.",
          "The quick brown fox jumps over the lazy dog.",
-         "Data science combines statistics, computer science, and domain knowledge.",
-         "Cloud computing provides scalable resources over the internet.",
-         "Machine learning algorithms can improve with more data.",
-         "The future of technology is driven by innovation and creativity.",
-         "Cybersecurity is essential for protecting sensitive information.",
-         "Blockchain technology offers a secure way to record transactions."
+
 ]
 
 class Hard_Word(BaseModel):
@@ -37,10 +37,10 @@ class Hard_Word(BaseModel):
     snippet_url: str
 
 class PNP:
-    def __init__ (self, input):
+    def __init__ (self, input_text):
         client = OpenAI(api_key=OAI_API_KEY)
         self.client = client
-        self.input = input
+        self.input_text = input_text
         self.system_prompt = ""
 
         # Defines where to save audio files
@@ -50,7 +50,14 @@ class PNP:
         # Save difficult words – usually proper nouns
         self.hard_word_array = []
         self.hard_words = []
-    
+        
+        self.hard_words_data = self.update_corrections_dictionary()
+
+    def update_corrections_dictionary (self):
+        with open("./hard_words.json", "r") as json_file:
+            data = json.load(json_file)
+            return data 
+        
     # Speak the text
     def generate_audio(self, text, index, iteration): # Returns the location of the audio file
         response = self.client.audio.speech.create(
@@ -74,15 +81,27 @@ class PNP:
         )
         return (speech_file_path, transcription)
     
+    def type_and_capture_input(self, text):  # Get user input intermediately (optional)
+        print("\nMake your edits and press Enter:\n")
+        kbd.write(text)
+        
+        user_input = input()
+
+        return user_input.strip()
+
+    def apply_known_corrections(self, corrected_transcript):  # Simply replace known corrections
+        for entry in self.hard_words_data: 
+            corrected_transcript = corrected_transcript.replace(entry['attempted_word'], entry['word'])
+        return corrected_transcript
+    
     # GPT-4o to correct the transcription
-    def generate_corrected_transcript(self, input, temperature=0): # Returns the transcribed correct text 
+    def generate_corrected_transcript(self, input_text, temperature=0): # Returns the transcribed correct text 
         self.system_prompt = f"You are a helpful assistant for the company ZyntriQix. Your task is to correct any spelling discrepancies in the transcribed text. Make sure that the names of the following products are spelled correctly. Only add necessary punctuation such as periods, commas, and capitalization, and use only the context provided. Always return the corrected text and nothing else."
 
         if len(self.hard_word_array) > 0:
                 self.system_prompt += f" Some common mistakes will be given to you in the form (correct spelling : incorrect spelling). "
         for corr, incorr in self.hard_word_array:
             self.system_prompt += f"({corr} : {incorr}), "
-        print(self.system_prompt)
         
         response = self.client.chat.completions.create(
             model="gpt-4o",
@@ -94,16 +113,24 @@ class PNP:
                 },
                 {
                     "role": "user",
-                    "content": input
+                    "content": input_text
                 }
             ]
         )
-        return response.choices[0].message.content
+        corrected_transcript = response.choices[0].message.content
+
+        corrected_transcript = self.apply_known_corrections(corrected_transcript)
+
+        # Allows for human input only if its entered into the terminal
+        # Comment out if you don't want to edit the transcript
+        corrected_transcript = self.type_and_capture_input(corrected_transcript)
+        
+        return corrected_transcript
 
     def diff_correction(self, reference, text): # Returns a tuple of (correct_word, incorrect_transcription)
         ref_words = reference.split()
         text_words = text.split()
-        corrections = []
+
         for ref_index, word in enumerate(ref_words):
             if word in text_words:
                 text_index = text_words.index(word) 
@@ -121,6 +148,9 @@ class PNP:
                 curr_hard_word = ""
             else:
                 curr_hard_word += word + " "
+                print(f"Current Hard Word - right: {curr_hard_word}")
+        if curr_hard_word.strip():
+            ref_hard.append(curr_hard_word.strip())
 
         curr_hard_word = ""
         for word in text_words:
@@ -131,6 +161,10 @@ class PNP:
                 curr_hard_word = ""
             else:
                 curr_hard_word += word + " "
+                print(f"Current Hard Word - wrong: {curr_hard_word}")
+        if curr_hard_word.strip():
+            text_hard.append(curr_hard_word.strip())
+
         # Return a list of tuples of the form (reference_hard_word, text_hard_word)
         return list(zip(ref_hard, text_hard))
 
@@ -141,13 +175,15 @@ class PNP:
     
 
     def get_timestamp(self, hard_word, transcription): # Returns the timestamp of the hard word
-        hard_words = hard_word.split()  # Split the hard_word into individual words because punctuation hard to deal with
+        hard_words = re.findall(r'\b\w+\b', hard_word)  # Split the hard_word into individual words AND remove punctuation
         start = float('inf')
         end = -float('inf')
         for i, word in enumerate(transcription.words):
+            print(f"Word: {word.word}")
             if word.word in hard_words:  # Check if the word is in the group
                 start = min(start, word.start)
                 end = max(end, word.end)
+
         if start == float('inf') or end == -float('inf'):
             return None
         return (start, end)  # Return start and end timestamps as a tuple
@@ -226,8 +262,8 @@ class PNP:
         wer = d[len(ref_words)][len(hyp_words)] / len(ref_words)
         return wer   
 
-    def test(self, input):
-        for i, text in enumerate(input):
+    def test(self, input_text):
+        for i, text in enumerate(input_text):
             speech_file_loc = self.generate_audio(text, i, 0)
             file_path, transcription = self.transcribe_audio(speech_file_loc)
             print(f"Transcription: {transcription.text}\n\n")
@@ -236,12 +272,16 @@ class PNP:
             corr_incorr_pairs = self.diff_correction(corrected_transcript, transcription.text)
             print(f"Corr incorr pairs: {corr_incorr_pairs}")
             self.hard_word_array.extend(corr_incorr_pairs)
+
             self.build_hard_words(corr_incorr_pairs, transcription, file_path)
+            self.display_hard_words()
+            self.save_hard_words()
+            self.hard_words = []
+
+            self.update_corrections_dictionary()
 
             wer = self.calculate_wer(text, corrected_transcript)
             print(f"WER: {wer}\n\n")
-        self.display_corrections(corr_incorr_pairs)
-        self.display_hard_words()
-        self.save_hard_words()
-pnp = PNP(input)
-pnp.test(input)
+
+pnp = PNP(input_text)
+pnp.test(input_text)

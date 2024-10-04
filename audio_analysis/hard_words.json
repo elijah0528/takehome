@@ -1,14 +1,57 @@
 [
     {
-        "word": "ZyntriQix, DigiQue",
-        "attempted_word": "Zintrikix, Digique",
+        "word": "ZyntriQix,",
+        "attempted_word": "Zintra Kicks,",
         "before_word": "",
-        "after_word": "Plus,",
+        "after_word": "Digic",
         "timestamps": [
-            0.9800000190734863,
-            1.2200000286102295
+            0.0,
+            0.41999998688697815
         ],
-        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_013711_ZyntriQix,DigiquePlus,.mp3"
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_123141_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "datasets",
+        "attempted_word": "data sets",
+        "before_word": "large",
+        "after_word": "for",
+        "timestamps": [
+            2.140000104904175,
+            2.6600000858306885
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_123210_Deeplearningmodels.mp3"
+    },
+    {
+        "word": "ZyntriQix,",
+        "attempted_word": "Zintrikix,",
+        "before_word": "",
+        "after_word": "Digik",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_123434_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "ZyntriQix,",
+        "attempted_word": "ZintraKix,",
+        "before_word": "",
+        "after_word": "Digique",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_123543_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "ZyntriQix,",
+        "attempted_word": "ZintraKix,",
+        "before_word": "",
+        "after_word": "DigiPlus,",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_123904_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "ExaQuasia,",
+        "attempted_word": "Exasquasia,",
+        "before_word": "V8,",
+        "after_word": "Echonix",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_123904_ZyntriQix,DigiquePlus,.mp3"
     },
     {
         "word": "DigiFractal",
@@ -16,9 +59,355 @@
         "before_word": "7,",
         "after_word": "Matrix,",
         "timestamps": [
-            6.420000076293945,
+            6.320000171661377,
+            6.820000171661377
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_123904_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "ZyntriQix,",
+        "attempted_word": "Zintra Kix,",
+        "before_word": "",
+        "after_word": "DigiPlus,",
+        "timestamps": [
+            0.0,
+            0.46000000834465027
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_124010_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "DigiFractal",
+        "attempted_word": "Digifractal",
+        "before_word": "7,",
+        "after_word": "Matrix,",
+        "timestamps": [
+            6.679999828338623,
+            7.239999771118164
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_124010_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "datasets",
+        "attempted_word": "data sets",
+        "before_word": "large",
+        "after_word": "for",
+        "timestamps": [
+            1.899999976158142,
+            2.4200000762939453
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_124048_Deeplearningmodels.mp3"
+    },
+    {
+        "word": "ZyntriQix,",
+        "attempted_word": "ZintraKix,",
+        "before_word": "",
+        "after_word": "DigiPlus,",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_124206_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "DigiFractal",
+        "attempted_word": "Digifractal",
+        "before_word": "7,",
+        "after_word": "Matrix,",
+        "timestamps": [
+            6.119999885559082,
+            6.619999885559082
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_124206_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "ZyntriQix,",
+        "attempted_word": "Zyntra Kicks,",
+        "before_word": "",
+        "after_word": "DigiPlus,",
+        "timestamps": [
+            0.0,
+            0.41999998688697815
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_124312_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "DigiFractal",
+        "attempted_word": "Digifractal",
+        "before_word": "7,",
+        "after_word": "Matrix,",
+        "timestamps": [
+            6.480000019073486,
+            6.980000019073486
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_124312_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "ZyntriQix, Digiq",
+        "attempted_word": "Zentric X, Digic",
+        "before_word": "",
+        "after_word": "Plus,",
+        "timestamps": [
+            0.0,
+            1.1799999475479126
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_124647_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "DigiFractal",
+        "attempted_word": "Digifractal",
+        "before_word": "7,",
+        "after_word": "Matrix,",
+        "timestamps": [
+            6.400000095367432,
+            6.880000114440918
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_124647_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "sea.",
+        "attempted_word": "see.",
+        "before_word": "to",
+        "after_word": "",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_124650_Sevenseashellsare.mp3"
+    },
+    {
+        "word": "sea.",
+        "attempted_word": "see.",
+        "before_word": "to",
+        "after_word": "",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_124655_Sevenseashellsare.mp3"
+    },
+    {
+        "word": "ZyntriQix, DigiKey",
+        "attempted_word": "Zyntra Kicks, Digi-Key",
+        "before_word": "",
+        "after_word": "Plus,",
+        "timestamps": [
+            0.0,
+            0.4399999976158142
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_154545_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "DigiFractal",
+        "attempted_word": "Digifractal",
+        "before_word": "7,",
+        "after_word": "Matrix,",
+        "timestamps": [
+            6.039999961853027,
+            6.559999942779541
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_154545_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "seal",
+        "attempted_word": "see.",
+        "before_word": "to",
+        "after_word": "",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_154552_Sevenseashellsare.mp3"
+    },
+    {
+        "word": "ZyntriQix,",
+        "attempted_word": "Zintrix,",
+        "before_word": "",
+        "after_word": "DigiPlus,",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_154659_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "DigiFractal",
+        "attempted_word": "Digifractal",
+        "before_word": "7,",
+        "after_word": "Matrix,",
+        "timestamps": [
+            6.380000114440918,
+            6.860000133514404
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_154659_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "seals.",
+        "attempted_word": "see.",
+        "before_word": "to",
+        "after_word": "",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_154704_Sevenseashellsare.mp3"
+    },
+    {
+        "word": "ZyntriQix, DigiQ",
+        "attempted_word": "Zintrikix, Digiq",
+        "before_word": "",
+        "after_word": "Plus,",
+        "timestamps": [
+            1.1799999475479126,
+            1.5
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_154955_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "DigiFractal",
+        "attempted_word": "Digifractal",
+        "before_word": "7,",
+        "after_word": "Matrix,",
+        "timestamps": [
+            6.360000133514404,
             6.900000095367432
         ],
-        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_013711_ZyntriQix,DigiquePlus,.mp3"
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_154955_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "seals.",
+        "attempted_word": "see.",
+        "before_word": "to",
+        "after_word": "",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155000_Sevenseashellsare.mp3"
+    },
+    {
+        "word": "ZyntriQix,",
+        "attempted_word": "Zyntra Kicks,",
+        "before_word": "",
+        "after_word": "Digi+,",
+        "timestamps": [
+            0.0,
+            0.4399999976158142
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155111_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "DigiFractal",
+        "attempted_word": "Digifractal",
+        "before_word": "7,",
+        "after_word": "Mix,",
+        "timestamps": [
+            6.380000114440918,
+            6.900000095367432
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155111_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "ZyntriQix, Digiq",
+        "attempted_word": "Zyntra Kicks, Digic",
+        "before_word": "",
+        "after_word": "Plus,",
+        "timestamps": [
+            0.0,
+            1.2799999713897705
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155140_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "DigiFractal",
+        "attempted_word": "Digifractal",
+        "before_word": "7,",
+        "after_word": "Matrix,",
+        "timestamps": [
+            6.159999847412109,
+            6.679999828338623
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155140_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "seals.",
+        "attempted_word": "see.",
+        "before_word": "to",
+        "after_word": "",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155145_Sevenseashellsare.mp3"
+    },
+    {
+        "word": "ZyntriQix,",
+        "attempted_word": "Zintrix,",
+        "before_word": "",
+        "after_word": "Digic",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155328_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "DigiFractal",
+        "attempted_word": "Digifractal",
+        "before_word": "7,",
+        "after_word": "Matrix,",
+        "timestamps": [
+            5.860000133514404,
+            6.440000057220459
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155328_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "seals.",
+        "attempted_word": "see.",
+        "before_word": "to",
+        "after_word": "",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155334_Sevenseashellsare.mp3"
+    },
+    {
+        "word": "seals.\u001b[A",
+        "attempted_word": "see.",
+        "before_word": "to",
+        "after_word": "",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155342_Sevenseashellsare.mp3"
+    },
+    {
+        "word": "ZyntriQix,",
+        "attempted_word": "Zintrix,",
+        "before_word": "",
+        "after_word": "DigiPlus,",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155415_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "DigiFractal",
+        "attempted_word": "Digifractal",
+        "before_word": "7,",
+        "after_word": "Matrix,",
+        "timestamps": [
+            6.119999885559082,
+            6.679999828338623
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155415_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "seals",
+        "attempted_word": "see.",
+        "before_word": "to",
+        "after_word": "",
+        "timestamps": null,
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155422_Sevenseashellsare.mp3"
+    },
+    {
+        "word": "ZyntriQix,",
+        "attempted_word": "ZyntraKix,",
+        "before_word": "",
+        "after_word": "Digi+,",
+        "timestamps": [
+            0.0,
+            0.6600000262260437
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155558_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "DigiFractal",
+        "attempted_word": "Digifractal",
+        "before_word": "7,",
+        "after_word": "Matrix,",
+        "timestamps": [
+            6.300000190734863,
+            6.820000171661377
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155558_ZyntriQix,DigiquePlus,.mp3"
+    },
+    {
+        "word": "seals",
+        "attempted_word": "see.",
+        "before_word": "to",
+        "after_word": "",
+        "timestamps": [
+            2.0,
+            2.240000009536743
+        ],
+        "snippet_url": "/Users/elijahk/Code/wispr_takehome/audio_analysis/audio_files/speech_155602_Sevenseashellsare.mp3"
     }
 ]
